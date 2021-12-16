@@ -1,0 +1,11 @@
+<div>
+  <%= attachment_image_tag @resipi, :image %>
+  <p>ショップ名：<%= @resipi.name %></p>
+  <p>説明：<%= @resipi.material %></p>
+  <p>説明：<%= @resipi.introduction %></p>
+  <p>ユーザーネーム：<%= @resipi.user.name %></p>
+  <p>投稿日時：<%= @resipi.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @resipi.user == current_user %>
+    <%= link_to "削除", resipi_path(@resipi), method: :delete %>
+  <% end %>
+</div>

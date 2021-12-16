@@ -1,0 +1,11 @@
+<% @resipis.each do |resipi| %>
+<div>
+ <%= link_to resipi_path(resipi.id) do %>
+  <%= attachment_image_tag resipi, :image %>
+ <% end %>
+  <p>ショップ名：<%= resipi.name %></p>
+  <p>説明：<%= resipi.material %></p>
+  <p>説明：<%= resipi.introduction %></p>
+  <p>ユーザーネーム：<%= resipi.user.name %></p>
+</div>
+<% end %>

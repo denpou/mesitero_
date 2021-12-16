@@ -9,3 +9,23 @@
     <%= link_to "削除", resipi_path(@resipi), method: :delete %>
   <% end %>
 </div>
+
+<div>
+<p>コメント件数：<%= @resipi.comments.count %></p>
+<% @resipi.comments.each do |comment| %>
+ 
+  <%= comment.user.name %>
+  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <% if comment.user == current_user %>
+  <div>
+    <%= link_to "削除", resipi_comment_path(comment.resipi, comment), method: :delete %>
+  </div>
+  <% end %>
+<% end %>
+</div>
+<div>
+<%= form_with(model:[@resipi, @comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
+</div>

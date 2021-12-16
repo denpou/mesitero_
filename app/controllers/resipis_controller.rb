@@ -17,6 +17,7 @@ class ResipisController < ApplicationController
 
   def show
     @resipi = Resipi.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit

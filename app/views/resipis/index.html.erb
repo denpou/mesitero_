@@ -8,5 +8,6 @@
   <p>説明：<%= resipi.material %></p>
   <p>説明：<%= resipi.introduction %></p>
   <p>ユーザーネーム：<%= resipi.user.name %></p>
+  <p><%= link_to "#{resipi.comments.count} コメント", resipi_path(resipi.id) %></p>
 </div>
 <% end %>

@@ -8,6 +8,20 @@
   <% if @resipi.user == current_user %>
     <%= link_to "削除", resipi_path(@resipi), method: :delete %>
   <% end %>
+  <!--フォロー機能-->
+  <% if @resipi.favorited_by?(current_user) %>
+    <p>
+      <%= link_to resipi_favorites_path(@resipi), method: :delete do %>
+        ♥<%= @resipi.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to resipi_favorites_path(@resipi), method: :post do %>
+        ♡<%= @resipi.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
 </div>
 
 <div>

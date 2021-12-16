@@ -12,7 +12,7 @@ class ResipisController < ApplicationController
   end
 
   def index
-    @resipis = Resipi.all
+    @resipis = Resipi.page(params[:page]).reverse_order
   end
 
   def show

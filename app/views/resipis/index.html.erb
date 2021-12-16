@@ -11,3 +11,4 @@
   <p><%= link_to "#{resipi.comments.count} コメント", resipi_path(resipi.id) %></p>
 </div>
 <% end %>
+<%= paginate @resipis %>

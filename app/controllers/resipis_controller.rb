@@ -7,8 +7,11 @@ class ResipisController < ApplicationController
   def create
     @resipi = Resipi.new(resipi_params)
     @resipi.user_id = current_user.id
-    @resipi.save
-    redirect_to resipis_path
+    if @resipi.save
+      redirect_to resipis_path
+    else
+      render :new
+    end
   end
 
   def index

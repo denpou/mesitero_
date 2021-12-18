@@ -1,7 +1,7 @@
 <% @resipis.each do |resipi| %>
 <div>
-  <%= attachment_image_tag resipi, :image %>
-
+  <%= attachment_image_tag resipi, :image, format: 'jpeg', fallback: "no_image.jpg", size: "800x540"  %>
+  <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
 <%= link_to resipi_path(resipi.id) do %>
   <p>ショップ名：<%= resipi.name %></p>
 <% end %>

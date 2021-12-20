@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  
+  def index
+    @users = User.page(params[:page]).reverse_order
+  end
+  
   def show
     @user = User.find(params[:id])
     @resipis = @user.resipis.page(params[:page]).reverse_order

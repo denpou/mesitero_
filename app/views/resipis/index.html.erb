@@ -1,14 +1,19 @@
-<% @resipis.each do |resipi| %>
-<div>
-  <%= attachment_image_tag resipi, :image, format: 'jpeg', fallback: "no_image.jpg", size: "800x540"  %>
-  <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
-<%= link_to resipi_path(resipi.id) do %>
-  <p>ショップ名：<%= resipi.name %></p>
-<% end %>
-  <p>説明：<%= resipi.material %></p>
-  <p>説明：<%= resipi.introduction %></p>
-  <p>ユーザーネーム：<%= resipi.user.name %></p>
-  <p><%= link_to "#{resipi.comments.count} コメント", resipi_path(resipi.id) %></p>
+<div class="container">
+ <div calss="row">
+　<% @resipis.each do |resipi| %>
+　　<div class="col-lg-10 col-sm-10 shadow-lg my-5"><br>
+　　　<%= attachment_image_tag resipi, :image, format: 'jpeg', fallback: "no_image.jpg", size: "420x240" %><br>
+　　　<p>
+　　　<%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %>
+　　　<%= link_to resipi_path(resipi.id) do %>
+　　　料理名：<%= resipi.name %>
+　　　<% end %>
+　　　</p>
+　　　<br>
+　　　投稿者：<%= resipi.user.name %>
+　　　<%= link_to "#{resipi.comments.count} コメント", resipi_path(resipi.id) %>
+　　</div>
+　　　
+　　<% end %>
+ </div>
 </div>
-<% end %>
-<%= paginate @resipis %>

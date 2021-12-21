@@ -12,13 +12,13 @@
      <%= f.attachment_field :image %>
      <p></p>
      <h4>レシピ名</h4>
-     <%= f.text_field :name %>
+     <%= f.text_field :name, :size=>"40x10" %>
      <p></p>
      <h4>材料</h4>
-     <%= f.text_area :material %>
+     <%= f.text_area :material, :size=>"60x7" %>
      <p></p>
      <h4>作り方</h4>
-     <%= f.text_area :introduction %>
+     <%= f.text_area :introduction, :size=>"60x10" %>
      <p></p>
      <%= f.submit 'レシピを投稿する' %>
    <% end %>

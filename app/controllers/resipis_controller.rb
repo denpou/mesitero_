@@ -23,16 +23,16 @@ class ResipisController < ApplicationController
     @comment = Comment.new
   end
 
-  def edit
-  end
-  
-  def update
-  end
-
   def destroy
     @resipi = Resipi.find(params[:id])
     @resipi.destroy
     redirect_to resipis_path
+  end
+  
+  def search
+    @resipis = Resipi.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
   end
   
   private

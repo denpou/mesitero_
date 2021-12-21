@@ -1,0 +1,2 @@
+module ResipisHelper
+end

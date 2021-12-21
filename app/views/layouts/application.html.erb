@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mesitero</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body class="back">
+ <header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+     <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png', :size => '280x60' %></a>
+     <div class="header-content row">
+       <div class="text-center">
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+            <%= f.text_field :keyword, value: @keyword %>
+            <%= f.submit "検索" %>
+            <% end %>
+       </div>
+     <p>
+      <% if user_signed_in? %>
+        <%= link_to new_resipi_path do %>
+         <%= image_tag 'logo.png', :size => '280x60' %>
+        <% end %>
+        <%= link_to 'マイページ', user_path(current_user.id) %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "会員登録", new_user_registration_path %>
+        <%= link_to "ログイン", new_user_session_path %>
+      <% end %>
+      </p>
+     </div>
+    </div>
+  </nav>
+ </header>
+    <%= yield %>
+</body>
+<footer class="footer" >
+  <div class="row">
+    <div class="mx-auto">
+    <br><br><br>
+    <p>© 2021 mesitero CopyRight Infratop.inc</p>
+    </div>
+  </div>
+</footer>
+</html>

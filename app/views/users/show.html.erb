@@ -11,15 +11,16 @@
  </div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
  <div calss="row">  
  <h3>投稿レシピ一覧</h3>
   <% @resipis.each do |resipi| %>
-     <div class="col-lg-3 col-sm-3 mx-2 shadow-lg rounded px-3 my-4">
-       <%= attachment_image_tag resipi, :image, format: 'jpeg', fallback: "no_image.jpg", size: "240x200"   %>
+     <div class="col-md-2 px-4 shadow-lg my-5">
+      <%= attachment_image_tag resipi, :image, format: 'jpeg', fallback: "no_image.jpg", size: "240x200"   %>
  　　　　 <%= link_to resipi_path(resipi.id) do %>
-       　<p>料理名<%= resipi.name %></p>
-       <% end %>
+ 　　　 　 <p>料理名:<%= resipi.name %></p>
+       <br>
+      <% end %>
       </div>
      <% end %>
   <%= paginate @resipis %>

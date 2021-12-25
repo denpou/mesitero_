@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-
-  end
-
   def show
     @user = User.find(params[:id])
     @resipis = @user.resipis.page(params[:page]).reverse_order

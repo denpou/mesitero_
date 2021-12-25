@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div calss="row">
+ 　  <% @resipis.each do |resipi| %>
+　  　<div class="col-md-3 px-4 shadow-lg my-5"><br>
+　　  　<%= attachment_image_tag resipi, :image, format: 'png', fallback: "no_image.jpg", size: "420x300" %><br>
+　　    <p>
+　　  　<%= attachment_image_tag @user, :profile_image, format: 'png', fallback: "no_image.jpg", size: "60x60" %>
+        <%= link_to resipi_path(resipi.id) do %>
+　　  　料理名：<%= resipi.name %>
+　　  　</p>
+　　  　<% end %>
+　　  　<br>
+　  　　投稿者：<%= resipi.user.name %>
+　　  　<%= link_to "#{resipi.comments.count} コメント", resipi_path(resipi.id) %><br>
+　  　</div>
+    <% end %>
+  </div>
+</div>

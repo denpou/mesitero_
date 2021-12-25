@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mesitero</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body class="back">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <!--ロゴ-->
+      <div class="p-6">
+        <%= link_to root_path do %>
+        <%= image_tag "logo.png", :size => '280x100' %>
+        <% end %>
+      </div>
+      <!--検索機能-->
+      <div class="text-center">
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: @keyword %>
+        <%= f.submit "検索" %>
+        <% end %>
+      </div>
+      <div class="pull-right">
+       <% if user_signed_in? %>
+       <!--レシピ投稿-->
+        <%= link_to new_resipi_path do %>
+        <%= image_tag "new_resipi.png", :size => '100x100' %>
+        <% end %>
+       <!--マイページ-->
+         <%= link_to user_path(current_user.id) do %>
+         <%= image_tag "mypage.png", :size => '100x100' %>
+         <% end %>
+       <!--ログアウト-->
+        <%= link_to destroy_user_session_path, method: :delete do %>
+        <%= image_tag "log_out.png", :size => '100x100' %>
+        <% end %>
+       <% else %>
+       <!--会員登録-->
+        <%= link_to new_user_registration_path do %>
+        <%= image_tag "new_user.png", :size => '100x100' %>
+        <% end %>
+       <!--ログイン-->
+        <%= link_to new_user_session_path do %>
+        <%= image_tag "log_in.png", :size => '100x100' %>
+        <% end %>
+       <% end %>
+      </div>
+    </div>
+  </nav>
+    <%= yield %>
+</body>
+<footer class="footer" >
+  <div class="row">
+    <div class="mx-auto">
+    <br><br><br>
+    <p>© 2021 mesitero CopyRight Infratop.inc</p>
+    </div>
+  </div>
+</footer>
+</html>
